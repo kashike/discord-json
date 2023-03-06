@@ -99,4 +99,14 @@ public interface ApplicationCommandOptionData {
      */
     @JsonProperty("max_length")
     Possible<Integer> maxLength();
+
+    interface Type extends IntRepresentable {}
+
+    abstract class Builder {
+        public ImmutableApplicationCommandOptionData.Builder type(Type type) {
+            return this.type(type.getAsInt());
+        }
+
+        public abstract ImmutableApplicationCommandOptionData.Builder type(int type);
+    }
 }

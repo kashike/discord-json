@@ -59,4 +59,14 @@ public interface ApplicationCommandRequest {
      * value of ApplicationCommandType (defaults to 1, CHAT_INPUT)
      */
     Possible<Integer> type();
+
+    interface Type extends IntRepresentable {}
+
+    abstract class Builder {
+        public ImmutableApplicationCommandRequest.Builder type(Type type) {
+            return this.type(type.getAsInt());
+        }
+
+        public abstract ImmutableApplicationCommandRequest.Builder type(Integer type);
+    }
 }

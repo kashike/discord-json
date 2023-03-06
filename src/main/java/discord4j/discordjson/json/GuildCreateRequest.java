@@ -6,7 +6,6 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import discord4j.discordjson.Id;
 import discord4j.discordjson.possible.Possible;
 import org.immutables.value.Value;
-import reactor.util.annotation.Nullable;
 
 import java.util.List;
 
@@ -49,5 +48,4 @@ public interface GuildCreateRequest {
 
     @JsonProperty("system_channel_flags")
     Possible<Integer> systemChannelFlags();
-
 }

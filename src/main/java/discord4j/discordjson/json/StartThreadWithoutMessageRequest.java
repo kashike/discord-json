@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import discord4j.discordjson.possible.Possible;
 import org.immutables.value.Value;
+import reactor.util.annotation.Nullable;
 
 @Value.Immutable
 @JsonSerialize(as = ImmutableStartThreadWithoutMessageRequest.class)
@@ -41,4 +42,14 @@ public interface StartThreadWithoutMessageRequest {
      */
     @JsonProperty("rate_limit_per_user")
     Possible<Integer> rateLimitPerUser();
+
+    interface Type extends IntRepresentable {}
+
+    abstract class Builder {
+        public ImmutableStartThreadWithoutMessageRequest.Builder type(@Nullable Type type) {
+            return this.type(IntRepresentable.possible(type));
+        }
+
+        public abstract ImmutableStartThreadWithoutMessageRequest.Builder type(Possible<Integer> value);
+    }
 }

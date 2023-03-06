@@ -31,4 +31,14 @@ public interface ChannelCreateRequest {
     @JsonProperty("parent_id")
     Possible<String> parentId();
     Possible<Boolean> nsfw();
+
+    interface Type extends IntRepresentable {}
+
+    abstract class Builder {
+        public ImmutableChannelCreateRequest.Builder type(Type type) {
+            return this.type(type.getAsInt());
+        }
+
+        public abstract ImmutableChannelCreateRequest.Builder type(Integer type);
+    }
 }

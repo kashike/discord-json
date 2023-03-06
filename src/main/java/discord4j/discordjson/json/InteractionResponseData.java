@@ -23,4 +23,14 @@ public interface InteractionResponseData {
      * an optional response message
      */
     Possible<InteractionApplicationCommandCallbackData> data();
+
+    interface Type extends IntRepresentable {}
+
+    abstract class Builder {
+        public ImmutableInteractionResponseData.Builder type(Type type) {
+            return this.type(type.getAsInt());
+        }
+
+        public abstract ImmutableInteractionResponseData.Builder type(int type);
+    }
 }
